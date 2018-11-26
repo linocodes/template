@@ -4,7 +4,7 @@ import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
 
 
-public interface ProductOutputChannel {
+public interface MenuOutputChannel {
 
     String PRODUCT_DELETED_OUTPUT = "productDeletedOutput";
 

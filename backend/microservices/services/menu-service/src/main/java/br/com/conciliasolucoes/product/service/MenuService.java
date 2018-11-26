@@ -7,32 +7,32 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
 import br.com.conciliasolucoes.product.domain.Menu;
-import br.com.conciliasolucoes.product.repository.ProductRepository;
+import br.com.conciliasolucoes.product.repository.MenuRepository;
 
 import javax.ws.rs.NotFoundException;
 import java.util.List;
 
 
 @Service
-public class ProductService {
+public class MenuService {
 
     @Autowired
-    private ProductRepository productRepository;
+    private MenuRepository menuRepository;
 
     @Autowired
-    @Qualifier(ProductOutputChannel.PRODUCT_DELETED_OUTPUT)
-    private MessageChannel productDeletedMessageChannel;
+    @Qualifier(MenuOutputChannel.PRODUCT_DELETED_OUTPUT)
+    private MessageChannel menuDeletedMessageChannel;
 
     @Autowired
-    @Qualifier(ProductOutputChannel.PRODUCT_UPDATED_OUTPUT)
-    private MessageChannel productUpdatedMessageChannel;
+    @Qualifier(MenuOutputChannel.PRODUCT_UPDATED_OUTPUT)
+    private MessageChannel menuUpdatedMessageChannel;
 
     public List<Menu> getProducts() {
-        return productRepository.findAll();
+        return menuRepository.findAll();
     }
 
     public Long createProduct(Menu product) {
-        product = productRepository.save(product);
+        product = menuRepository.save(product);
         return product.getId();
     }
 

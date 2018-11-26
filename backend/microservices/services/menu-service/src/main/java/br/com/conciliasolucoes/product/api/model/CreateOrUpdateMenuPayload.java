@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 
-public class CreateOrUpdateProductPayload {
+public class CreateOrUpdateMenuPayload {
 
     @NotNull
     @NotBlank
@@ -15,7 +15,7 @@ public class CreateOrUpdateProductPayload {
         return name;
     }
 
-    public CreateOrUpdateProductPayload setName(String name) {
+    public CreateOrUpdateMenuPayload setName(String name) {
         this.name = name;
         return this;
     }

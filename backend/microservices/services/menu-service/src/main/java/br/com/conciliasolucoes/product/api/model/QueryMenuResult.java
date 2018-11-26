@@ -1,7 +1,7 @@
 package br.com.conciliasolucoes.product.api.model;
 
 
-public class QueryProductResult {
+public class QueryMenuResult {
 
     private String id;
 
@@ -11,7 +11,7 @@ public class QueryProductResult {
         return id;
     }
 
-    public QueryProductResult setId(String id) {
+    public QueryMenuResult setId(String id) {
         this.id = id;
         return this;
     }
@@ -20,7 +20,7 @@ public class QueryProductResult {
         return name;
     }
 
-    public QueryProductResult setName(String name) {
+    public QueryMenuResult setName(String name) {
         this.name = name;
         return this;
     }

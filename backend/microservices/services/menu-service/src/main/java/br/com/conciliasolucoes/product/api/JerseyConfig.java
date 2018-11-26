@@ -17,7 +17,7 @@ public class JerseyConfig extends ResourceConfig {
     }
 
     private void registerResources() {
-        register(ProductResource.class);
+        register(MenuResource.class);
     }
 
     private void registerProviders() {
