@@ -7,10 +7,7 @@
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
 
   @include themify($themes) {
-    background: themed('colorBackground');
-
-    background: rgb(131,58,180);
-    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(29,253,115,0.7819502801120448) 50%, rgba(252,176,69,1) 100%);    
+    background: themed('colorBackgroundTopBar');
   }
 
   .topbar__search-field {
