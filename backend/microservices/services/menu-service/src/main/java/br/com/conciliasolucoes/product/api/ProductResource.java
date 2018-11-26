@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import br.com.conciliasolucoes.product.api.mapper.ProductMapper;
 import br.com.conciliasolucoes.product.api.model.CreateOrUpdateProductPayload;
 import br.com.conciliasolucoes.product.api.model.QueryProductResult;
-import br.com.conciliasolucoes.product.domain.Product;
+import br.com.conciliasolucoes.product.domain.Menu;
 import br.com.conciliasolucoes.product.service.ProductService;
 
 import javax.validation.Valid;
@@ -16,11 +16,7 @@ import javax.ws.rs.core.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Component that exposes REST API endpoints for products.
- *
- * @author cassiomolin
- */
+
 @Component
 @Path("products")
 public class ProductResource {
@@ -37,7 +33,7 @@ public class ProductResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProducts() {
-        List<Product> products = productService.getProducts();
+        List<Menu> products = productService.getProducts();
         List<QueryProductResult> queryResults = products.stream().map(productMapper::toQueryProductResult).collect(Collectors.toList());
         return Response.ok(queryResults).build();
     }
@@ -45,7 +41,7 @@ public class ProductResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createProduct(@Valid @NotNull CreateOrUpdateProductPayload productPayload) {
-        Product product = productMapper.toProduct(productPayload);
+        Menu product = productMapper.toProduct(productPayload);
         String id = productService.createProduct(product);
         return Response.created(uriInfo.getAbsolutePathBuilder().path(id).build()).build();
     }
@@ -54,7 +50,7 @@ public class ProductResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProduct(@PathParam("id") String id) {
-        Product product = productService.getProduct(id);
+        Menu product = productService.getProduct(id);
         QueryProductResult queryResult = productMapper.toQueryProductResult(product);
         return Response.ok(queryResult).build();
     }
@@ -63,7 +59,7 @@ public class ProductResource {
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateProduct(@PathParam("id") String id, @Valid @NotNull CreateOrUpdateProductPayload payload) {
-        Product product = productService.getProduct(id);
+        Menu product = productService.getProduct(id);
         productMapper.updateProduct(payload, product);
         productService.updateProduct(product);
         return Response.noContent().build();

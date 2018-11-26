@@ -3,11 +3,7 @@ package br.com.conciliasolucoes.product.service;
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
 
-/**
- * Messaging channel definition.
- *
- * @author cassiomolin
- */
+
 public interface ProductOutputChannel {
 
     String PRODUCT_DELETED_OUTPUT = "productDeletedOutput";

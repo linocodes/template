@@ -1,10 +1,6 @@
 package br.com.conciliasolucoes.product.api.model;
 
-/**
- * API model with details of a product query result.
- *
- * @author cassiomolin
- */
+
 public class QueryProductResult {
 
     private String id;

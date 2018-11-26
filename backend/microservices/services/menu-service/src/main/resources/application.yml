@@ -1,28 +1,32 @@
 server:
-  port: ${PORT:8001}
+  port: ${PORT:8010}
 
 spring:
   application:
-    name: product-service
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
-      database: product
-  cloud:
-    stream:
-      bindings:
-        productDeletedOutput:
-          destination: productDeletedInput
-          contentType: application/json
-        productUpdatedOutput:
-          destination: productUpdatedInput
-          contentType: application/json
-  rabbitmq:
-      host: localhost
-      port: 5672
-      username: guest
-      password: guest
+    name: menu-service
+      
+  datasource:
+ 
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/concilia-geral?createDatabaseIfNotExist=true
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: postgresql
+    database-platform:  org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: false
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        
+
 
 eureka:
   instance:

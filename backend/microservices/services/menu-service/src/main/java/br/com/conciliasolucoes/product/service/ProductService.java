@@ -6,17 +6,13 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
-import br.com.conciliasolucoes.product.domain.Product;
+import br.com.conciliasolucoes.product.domain.Menu;
 import br.com.conciliasolucoes.product.repository.ProductRepository;
 
 import javax.ws.rs.NotFoundException;
 import java.util.List;
 
-/**
- * Service that provides operations for products.
- *
- * @author cassiomolin
- */
+
 @Service
 public class ProductService {
 
@@ -31,22 +27,22 @@ public class ProductService {
     @Qualifier(ProductOutputChannel.PRODUCT_UPDATED_OUTPUT)
     private MessageChannel productUpdatedMessageChannel;
 
-    public List<Product> getProducts() {
+    public List<Menu> getProducts() {
         return productRepository.findAll();
     }
 
-    public String createProduct(Product product) {
+    public Long createProduct(Menu product) {
         product = productRepository.save(product);
         return product.getId();
     }
 
-    public void updateProduct(Product product) {
+    public void updateProduct(Menu product) {
         product = productRepository.save(product);
         productUpdatedMessageChannel.send(MessageBuilder.withPayload(product).build());
     }
 
-    public Product getProduct(String id) {
-        Product product = productRepository.findOne(id);
+    public Menu getProduct(String id) {
+        Menu product = productRepository.findOne(id);
         if (product == null) {
             throw new NotFoundException();
         }
@@ -54,7 +50,7 @@ public class ProductService {
     }
 
     public void deleteProduct(String id) {
-        Product product = productRepository.findOne(id);
+        Menu product = productRepository.findOne(id);
         if (product == null) {
             throw new NotFoundException();
         } else {

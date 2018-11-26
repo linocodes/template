@@ -4,11 +4,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.NotNull;
 
-/**
- * API model with details required to create a product.
- *
- * @author cassiomolin
- */
+
 public class CreateOrUpdateProductPayload {
 
     @NotNull
